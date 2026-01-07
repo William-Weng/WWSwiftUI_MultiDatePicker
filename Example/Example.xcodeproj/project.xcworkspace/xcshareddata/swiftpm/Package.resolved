@@ -1,0 +1,15 @@
+{
+  "originHash" : "16a0405990e27cbe2224e828e792ee826ddf4b6189a9b0f0e9eebd18a145b60e",
+  "pins" : [
+    {
+      "identity" : "wwswiftui_multidatepicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker",
+      "state" : {
+        "revision" : "747398fb40db3f239a0dcab76755f5b0b6e00ec2",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

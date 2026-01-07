@@ -117,7 +117,7 @@
 			mainGroup = 817EE1F52EB1FA050036B57C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				8112FF172F0E5C1F00083C2B /* XCLocalSwiftPackageReference "../../@WWSwiftUI_MultiDatePicker" */,
+				8112FF1A2F0E5EA000083C2B /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 817EE1FF2EB1FA050036B57C /* Products */;
@@ -360,12 +360,16 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		8112FF172F0E5C1F00083C2B /* XCLocalSwiftPackageReference "../../@WWSwiftUI_MultiDatePicker" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../@WWSwiftUI_MultiDatePicker";
+/* Begin XCRemoteSwiftPackageReference section */
+		8112FF1A2F0E5EA000083C2B /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		810B54A92F0E4FC9001A932A /* WWSwiftUI_MultiDatePicker */ = {
