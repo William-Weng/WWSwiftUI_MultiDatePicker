@@ -51,10 +51,7 @@ public extension WWSwiftUI.MultiDatePicker {
         parent.addChild(hostingController)
         hostingController.didMove(toParent: parent)
         
-        if let otherView = otherView {
-            otherView.addSubview(view)
-            hostingController.view.frame = otherView.bounds
-        }
+        if let otherView = otherView { hostingController.view._autolayout(on: otherView) }
     }
     
     /// 清除所選日期
@@ -98,6 +95,5 @@ private extension WWSwiftUI.MultiDatePicker {
                     .sorted()
         
         return formatDates
-
     }
 }
