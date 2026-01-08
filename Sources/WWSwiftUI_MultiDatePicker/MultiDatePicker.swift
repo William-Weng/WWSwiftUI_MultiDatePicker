@@ -71,29 +71,12 @@ private extension WWSwiftUI.MultiDatePicker {
     
     /// Model綁定
     func bindModel() {
-        
+                
         model.$selectedDates
             .receive(on: RunLoop.main)
             .sink { [unowned self] dateComponents in
-                let dates = self.formatDates(with: dateComponents)
-                self.delegate?.multiDatePicker(self, didSelected: dates ?? [])
+                self.delegate?.multiDatePicker(self, didSelected: dateComponents)
             }
             .store(in: &cancellables)
-    }
-    
-    /// 日期格式轉換
-    /// - Parameter dateComponents: Set<DateComponents>
-    /// - Returns: [String]
-    func formatDates(with dateComponents: Set<DateComponents>) -> [String] {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let formatDates = dateComponents
-                    .compactMap { Calendar.current.date(from: $0) }
-                    .map { dateFormatter.string(from: $0) }
-                    .sorted()
-        
-        return formatDates
     }
 }

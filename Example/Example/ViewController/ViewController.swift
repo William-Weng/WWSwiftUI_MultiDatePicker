@@ -33,8 +33,8 @@ final class ViewController: UIViewController {
 
 extension ViewController: WWSwiftUI.MultiDatePicker.Delegate {
     
-    func multiDatePicker(_ multiDatePicker: WWSwiftUI.MultiDatePicker, didSelected dates: [String]) {
-        let dates = dates.count > 0 ? dates.joined(separator: ", ") : "Unselected"
+    func multiDatePicker(_ multiDatePicker: WWSwiftUI.MultiDatePicker, didSelected dateComponents: Set<DateComponents>) {
+        let dates = dateComponents.count > 0 ? "\(dateComponents)" : "Unselected"
         resultLabel.text = "Selected Dates: \(dates)"
     }
 }
