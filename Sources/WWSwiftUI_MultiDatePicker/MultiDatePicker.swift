@@ -14,6 +14,12 @@ public extension WWSwiftUI {
     
     class MultiDatePicker: AnyObject {
         
+        public enum SelectType {
+            case single
+            case multiple
+            case range
+        }
+        
         public var view: UIView { hostingController.view }
         
         public weak var delegate: Delegate?
@@ -23,9 +29,9 @@ public extension WWSwiftUI {
         
         private var cancellables = Set<AnyCancellable>()
         
-        public init() {
+        public init(selectType: SelectType = .multiple) {
             self.model = DateModel()
-            self.hostingController = .init(rootView: MultiDatePickerView(model: model))
+            self.hostingController = .init(rootView: MultiDatePickerView(selectType: selectType, model: model))
         }
         
         deinit {
@@ -71,12 +77,10 @@ private extension WWSwiftUI.MultiDatePicker {
     
     /// Model綁定
     func bindModel() {
-                
+        
         model.$selectedDates
             .receive(on: RunLoop.main)
-            .sink { [unowned self] dateComponents in
-                self.delegate?.multiDatePicker(self, didSelected: dateComponents)
-            }
+            .sink { [unowned self] in self.delegate?.multiDatePicker(self, didSelected: $0) }
             .store(in: &cancellables)
     }
 }
