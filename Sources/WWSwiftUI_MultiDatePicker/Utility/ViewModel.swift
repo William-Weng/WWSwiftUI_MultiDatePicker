@@ -20,32 +20,18 @@ extension WWSwiftUI.MultiDatePicker {
     }
 }
 
+// MARK: - 主功能
 extension WWSwiftUI.MultiDatePicker.DateModel {
     
-    func insertDate(_ date: Date) {
-        let components = calendar.dateComponents(components, from: date)
-        selectedDates.insert(components)
-    }
-    
-    func insertToday() {
-        let today = Date()
-        insertDate(today)
-    }
-    
-    func removeDate(_ date: Date) {
-        let someday = calendar.dateComponents(components, from: date)
-        selectedDates.remove(someday)
-    }
-    
-    func removeToday() {
-        let today = Date()
-        removeDate(today)
-    }
-    
+    /// 移除全部日期
     func removeAllDate() {
         selectedDates.removeAll()
     }
     
+    /// 選擇日期區間 (沒有前後之分)
+    /// - Parameters:
+    ///   - date1: Date
+    ///   - date2: Date
     func selectDateRange(between dateComponents1: DateComponents, and dateComponents2: DateComponents) {
         
         guard let date1 = calendar.date(from: dateComponents1),
@@ -54,38 +40,56 @@ extension WWSwiftUI.MultiDatePicker.DateModel {
             return
         }
         
-        let dates = [date1, date2].sorted { $0 < $1 }
-        selectDateRange(from: dates[0], to: dates[1])
-    }
-    
-    func selectDateRange(between date1: Date, and date2: Date, by calendar: Calendar) {
-        let dates = [date1, date2].sorted { $0 < $1 }
-        selectDateRange(from: dates[0], to: dates[1])
-    }
-    
-    func autoSelectDateRange(by calendar: Calendar) {
-
-        let dates = Array(selectedDates).sorted()
-        
-        guard selectedDates.count > 1,
-              let firstDate = dates.first,
-              let lastDate = dates.last
-        else {
-            return
-        }
-        
-        let date1 = calendar.date(from: firstDate)!
-        let date2 = calendar.date(from: lastDate)!
-        
-        print("date1 = \(date1), date2 = \(date2)")
-
-        selectedDates.removeAll()
-        selectDateRange(from: date1, to: date2)
+        selectDateRange(between: date1, and: date2)
     }
 }
 
-extension WWSwiftUI.MultiDatePicker.DateModel {
+// MARK: - 小工具
+private extension WWSwiftUI.MultiDatePicker.DateModel {
     
+    /// 選擇日期區間 (沒有前後之分)
+    /// - Parameters:
+    ///   - date1: Date
+    ///   - date2: Date
+    func selectDateRange(between date1: Date, and date2: Date) {
+        let dates = [date1, date2].sorted { $0 < $1 }
+        selectDateRange(from: dates[0], to: dates[1])
+    }
+}
+
+// MARK: - 小工具
+private extension WWSwiftUI.MultiDatePicker.DateModel {
+
+    /// 加入日期
+    /// - Parameter date: Date
+    func insertDate(_ date: Date) {
+        let components = calendar.dateComponents(components, from: date)
+        selectedDates.insert(components)
+    }
+    
+    /// 加入今天日期
+    func insertToday() {
+        let today = Date()
+        insertDate(today)
+    }
+    
+    /// 移除日期
+    /// - Parameter date: Date
+    func removeDate(_ date: Date) {
+        let someday = calendar.dateComponents(components, from: date)
+        selectedDates.remove(someday)
+    }
+    
+    /// 移除今天日期
+    func removeToday() {
+        let today = Date()
+        removeDate(today)
+    }
+    
+    /// 選擇日期區間 (有前後之分)
+    /// - Parameters:
+    ///   - startDate: Date
+    ///   - endDate: Date
     func selectDateRange(from startDate: Date, to endDate: Date) {
         
         let startComponents = calendar.dateComponents(components, from: startDate)
@@ -102,11 +106,4 @@ extension WWSwiftUI.MultiDatePicker.DateModel {
     }
 }
 
-extension DateComponents: Comparable {
-    
-    public static func < (lhs: DateComponents, rhs: DateComponents) -> Bool {
-        guard let lhsDate = Calendar.current.date(from: lhs),
-              let rhsDate = Calendar.current.date(from: rhs) else { return false }
-        return lhsDate < rhsDate
-    }
-}
+

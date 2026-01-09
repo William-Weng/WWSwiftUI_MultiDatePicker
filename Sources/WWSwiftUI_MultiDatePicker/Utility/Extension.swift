@@ -7,6 +7,27 @@
 
 import UIKit
 
+// MARK: - DateComponents
+extension DateComponents: Comparable {
+    
+    /// DateComponents比大小
+    /// - Parameters:
+    ///   - lhs: DateComponents
+    ///   - rhs: DateComponents
+    /// - Returns: Bool
+    public static func < (lhs: DateComponents, rhs: DateComponents) -> Bool {
+        
+        guard let lhsDate = Calendar.current.date(from: lhs),
+              let rhsDate = Calendar.current.date(from: rhs)
+        else {
+            return false
+        }
+        
+        return lhsDate < rhsDate
+    }
+}
+
+// MARK: - UIView
 extension UIView {
     
     /// [設定LayoutConstraint => 不能加frame](https://zonble.gitbooks.io/kkbox-ios-dev/content/autolayout/intrinsic_content_size.html)

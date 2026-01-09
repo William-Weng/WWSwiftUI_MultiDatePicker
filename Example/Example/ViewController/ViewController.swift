@@ -21,13 +21,17 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func resetAction(_ sender: UIBarButtonItem) {
-        multiDatePicker.reset()
+        multiDatePicker.clean()
     }
     
     func initSetting() {
-        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .multiple)
+        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .range)
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
+    }
+    
+    deinit {
+        multiDatePicker.delegate = nil
     }
 }
 

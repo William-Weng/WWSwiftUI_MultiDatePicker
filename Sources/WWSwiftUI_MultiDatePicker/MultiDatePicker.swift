@@ -61,8 +61,9 @@ public extension WWSwiftUI.MultiDatePicker {
     }
     
     /// 清除所選日期
-    func reset() {
-        model.selectedDates.removeAll()
+    func clean() {
+        model.removeAllDate()
+        hostingController.rootView.reset()
     }
     
     /// 更新標題
