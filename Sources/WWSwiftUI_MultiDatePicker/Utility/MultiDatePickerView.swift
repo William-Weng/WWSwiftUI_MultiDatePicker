@@ -27,7 +27,7 @@ extension WWSwiftUI.MultiDatePicker {
                     get: { model.selectedDates },
                     set: { newValue in bindingAction(with: selectType, newValue: newValue) }
                 )
-
+                
                 MultiDatePicker(model.title, selection: binding)
                         .background(.clear)
             }
@@ -121,29 +121,13 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
     ///   - selected: 選中的日期
     func orderRangeDateComponents(first: DateComponents?, last: DateComponents?, selected: DateComponents?) {
         
+        guard let selected = selected else { return }
         guard let first = first else { firstDateComponents = selected; return }
                 
-        if let selected, model.selectedDates.count < 3 {
-            
-            if (selected > first) {
-                lastDateComponents = selected
-            } else {
-                lastDateComponents = first
-                firstDateComponents = selected
-            }
-            
-            return
-        }
+        if (selected > first) { lastDateComponents = selected; return }
         
-        guard let selected = selected,
-              selected < first
-        else {
-            lastDateComponents = selected
-            return
-        }
-        
-        lastDateComponents = last
         firstDateComponents = selected
+        lastDateComponents = last ?? first
     }
     
     /// 執行範圍內的日期選取
