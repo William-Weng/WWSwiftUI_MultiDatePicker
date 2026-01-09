@@ -29,7 +29,7 @@ public extension WWSwiftUI {
         
         private var cancellables = Set<AnyCancellable>()
         
-        public init(selectType: SelectType = .multiple) {
+        public init(type selectType: SelectType = .multiple) {
             self.model = DateModel()
             self.hostingController = .init(rootView: MultiDatePickerView(selectType: selectType, model: model))
         }

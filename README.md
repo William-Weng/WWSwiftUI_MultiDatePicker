@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/8fdeb550-80b7-44a7-915a-a76d2b6c1ea7
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.1.0"))
+    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.1.1"))
 ]
 ```
 
@@ -49,7 +49,7 @@ final class ViewController: UIViewController {
     }
     
     func initSetting() {
-        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .range)
+        multiDatePicker = WWSwiftUI.MultiDatePicker(type: .range)
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
     }

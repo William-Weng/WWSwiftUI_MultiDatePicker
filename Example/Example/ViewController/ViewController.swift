@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
     }
     
     func initSetting() {
-        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .range)
+        multiDatePicker = WWSwiftUI.MultiDatePicker(type: .range)
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
     }
