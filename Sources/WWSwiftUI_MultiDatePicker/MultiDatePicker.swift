@@ -14,12 +14,6 @@ public extension WWSwiftUI {
     
     class MultiDatePicker: AnyObject {
         
-        public enum SelectType {
-            case single
-            case multiple
-            case range
-        }
-        
         public var view: UIView { hostingController.view }
         
         public weak var delegate: Delegate?

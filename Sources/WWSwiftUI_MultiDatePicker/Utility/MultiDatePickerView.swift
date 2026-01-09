@@ -123,12 +123,23 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
         
         guard let first = first else { firstDateComponents = selected; return }
                 
-        if model.selectedDates.count < 3 { lastDateComponents = selected; return }
+        if let selected, model.selectedDates.count < 3 {
+            
+            if (selected > first) {
+                lastDateComponents = selected
+            } else {
+                lastDateComponents = first
+                firstDateComponents = selected
+            }
+            
+            return
+        }
         
         guard let selected = selected,
               selected < first
         else {
-            lastDateComponents = selected; return
+            lastDateComponents = selected
+            return
         }
         
         lastDateComponents = last
