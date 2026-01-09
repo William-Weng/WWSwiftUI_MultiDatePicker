@@ -72,7 +72,7 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
     func singleBindingAction(newValue: Set<DateComponents>) {
         
         let oldValue = model.selectedDates
-        let added = newValue.subtracting(oldValue).first
+        let added = (newValue - oldValue).first
         
         model.removeAllDate()
         if let added = added { model.selectedDates.insert(added) }
@@ -89,8 +89,8 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
     func rangeBindingAction(newValue: Set<DateComponents>) {
         
         let oldValue = model.selectedDates
-        let added = newValue.subtracting(oldValue).first
-        let removed = oldValue.subtracting(newValue).first
+        let added = (newValue - oldValue).first
+        let removed = (oldValue - newValue).first
         let selected = added ?? removed
         
         if model.selectedDates.isEmpty { reset() }

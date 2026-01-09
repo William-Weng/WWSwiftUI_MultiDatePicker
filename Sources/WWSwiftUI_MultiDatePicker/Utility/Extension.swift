@@ -7,6 +7,15 @@
 
 import UIKit
 
+/// [相對差集（差集）](https://zh.wikipedia.org/zh-tw/补集)
+/// - Parameters:
+///   - lhs: [Value]
+///   - rhs: [Value]
+/// - Returns: [Value]
+func - <Value: Hashable>(lhs: Set<Value>, rhs: Set<Value>) -> Set<Value> {
+    return lhs.subtracting(rhs)
+}
+
 // MARK: - DateComponents
 extension DateComponents: Comparable {
     
