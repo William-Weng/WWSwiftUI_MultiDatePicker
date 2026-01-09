@@ -33,13 +33,17 @@ extension WWSwiftUI.MultiDatePicker {
             }
             .padding()
         }
-        
-        /// 還原初始值
-        func reset() {
-            firstDateComponents = .none
-            lastDateComponents = .none
-            selectedDateComponents = .none
-        }
+    }
+}
+
+// MARK: - 開放工具
+extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
+    
+    /// 還原初始值
+    func reset() {
+        firstDateComponents = .none
+        lastDateComponents = .none
+        selectedDateComponents = .none
     }
 }
 
