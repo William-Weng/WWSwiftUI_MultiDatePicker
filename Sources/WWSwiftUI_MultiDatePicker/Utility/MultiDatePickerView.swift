@@ -70,7 +70,7 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
         let oldValue = model.selectedDates
         let added = newValue.subtracting(oldValue).first
         
-        model.selectedDates.removeAll()
+        model.removeAllDate()
         if let added = added { model.selectedDates.insert(added) }
     }
     
