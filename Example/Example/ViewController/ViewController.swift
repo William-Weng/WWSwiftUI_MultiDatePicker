@@ -21,20 +21,24 @@ final class ViewController: UIViewController {
     }
     
     @IBAction func resetAction(_ sender: UIBarButtonItem) {
-        multiDatePicker.reset()
+        multiDatePicker.clean()
     }
     
     func initSetting() {
-        multiDatePicker = WWSwiftUI.MultiDatePicker()
+        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .range)
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
+    }
+    
+    deinit {
+        multiDatePicker.delegate = nil
     }
 }
 
 extension ViewController: WWSwiftUI.MultiDatePicker.Delegate {
     
-    func multiDatePicker(_ multiDatePicker: WWSwiftUI.MultiDatePicker, didSelected dates: [String]) {
-        let dates = dates.count > 0 ? dates.joined(separator: ", ") : "Unselected"
+    func multiDatePicker(_ multiDatePicker: WWSwiftUI.MultiDatePicker, didSelected dateComponents: Set<DateComponents>) {
+        let dates = dateComponents.count > 0 ? "\(dateComponents)" : "Unselected"
         resultLabel.text = "Selected Dates: \(dates)"
     }
 }

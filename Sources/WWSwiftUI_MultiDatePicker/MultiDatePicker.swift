@@ -14,6 +14,12 @@ public extension WWSwiftUI {
     
     class MultiDatePicker: AnyObject {
         
+        public enum SelectType {
+            case single
+            case multiple
+            case range
+        }
+        
         public var view: UIView { hostingController.view }
         
         public weak var delegate: Delegate?
@@ -23,9 +29,9 @@ public extension WWSwiftUI {
         
         private var cancellables = Set<AnyCancellable>()
         
-        public init() {
+        public init(selectType: SelectType = .multiple) {
             self.model = DateModel()
-            self.hostingController = .init(rootView: MultiDatePickerView(model: model))
+            self.hostingController = .init(rootView: MultiDatePickerView(selectType: selectType, model: model))
         }
         
         deinit {
@@ -55,8 +61,9 @@ public extension WWSwiftUI.MultiDatePicker {
     }
     
     /// 清除所選日期
-    func reset() {
-        model.selectedDates.removeAll()
+    func clean() {
+        model.removeAllDate()
+        hostingController.rootView.reset()
     }
     
     /// 更新標題
@@ -74,26 +81,7 @@ private extension WWSwiftUI.MultiDatePicker {
         
         model.$selectedDates
             .receive(on: RunLoop.main)
-            .sink { [unowned self] dateComponents in
-                let dates = self.formatDates(with: dateComponents)
-                self.delegate?.multiDatePicker(self, didSelected: dates ?? [])
-            }
+            .sink { [unowned self] in self.delegate?.multiDatePicker(self, didSelected: $0) }
             .store(in: &cancellables)
-    }
-    
-    /// 日期格式轉換
-    /// - Parameter dateComponents: Set<DateComponents>
-    /// - Returns: [String]
-    func formatDates(with dateComponents: Set<DateComponents>) -> [String] {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        let formatDates = dateComponents
-                    .compactMap { Calendar.current.date(from: $0) }
-                    .map { dateFormatter.string(from: $0) }
-                    .sorted()
-        
-        return formatDates
     }
 }
