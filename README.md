@@ -53,6 +53,10 @@ final class ViewController: UIViewController {
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
     }
+    
+    deinit {
+        multiDatePicker.delegate = .none
+    }
 }
 
 extension ViewController: WWSwiftUI.MultiDatePicker.Delegate {

@@ -105,5 +105,3 @@ private extension WWSwiftUI.MultiDatePicker.DateModel {
         }
     }
 }
-
-

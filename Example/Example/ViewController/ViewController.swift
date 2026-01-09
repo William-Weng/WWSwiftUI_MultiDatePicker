@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     }
     
     deinit {
-        multiDatePicker.delegate = nil
+        multiDatePicker.delegate = .none
     }
 }
 

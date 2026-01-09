@@ -35,8 +35,8 @@ public extension WWSwiftUI {
         }
         
         deinit {
-            delegate = nil
-            hostingController.willMove(toParent: nil)
+            delegate = .none
+            hostingController.willMove(toParent: .none)
             hostingController.view.removeFromSuperview()
             hostingController.removeFromParent()
         }
@@ -50,7 +50,7 @@ public extension WWSwiftUI.MultiDatePicker {
     /// - Parameters:
     ///   - parent: UIViewController
     ///   - otherView: UIView?
-    func move(toParent parent: UIViewController, on otherView: UIView? = nil) {
+    func move(toParent parent: UIViewController, on otherView: UIView? = .none) {
         
         bindModel()
         

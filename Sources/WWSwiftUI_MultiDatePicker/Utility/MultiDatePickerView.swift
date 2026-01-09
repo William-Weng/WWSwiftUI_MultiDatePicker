@@ -34,6 +34,7 @@ extension WWSwiftUI.MultiDatePicker {
             .padding()
         }
         
+        /// 還原初始值
         func reset() {
             firstDateComponents = .none
             lastDateComponents = .none
@@ -84,15 +85,15 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
     func rangeBindingAction(newValue: Set<DateComponents>) {
         
         let oldValue = model.selectedDates
-        let addedDateComponents = newValue.subtracting(oldValue).first
-        let removedDateComponents = oldValue.subtracting(newValue).first
-        let selectedDateComponents = addedDateComponents ?? removedDateComponents
+        let added = newValue.subtracting(oldValue).first
+        let removed = oldValue.subtracting(newValue).first
+        let selected = added ?? removed
         
         if model.selectedDates.isEmpty { reset() }
-        if checkDoubleClickedAction(forRangeBinding: selectedDateComponents) { return }
+        if checkDoubleClickedAction(forRangeBinding: selected) { return }
         
-        self.selectedDateComponents = selectedDateComponents
-        orderRangeDateComponents(first: firstDateComponents, last: lastDateComponents, selected: selectedDateComponents)
+        selectedDateComponents = selected
+        orderRangeDateComponents(first: firstDateComponents, last: lastDateComponents, selected: selected)
         if !checkDateRangeAction(first: firstDateComponents, last: lastDateComponents) { model.selectedDates = newValue }
     }
 }
