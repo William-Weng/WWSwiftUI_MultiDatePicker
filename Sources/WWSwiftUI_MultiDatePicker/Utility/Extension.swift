@@ -37,7 +37,7 @@ extension DateComponents: Comparable {
 }
 
 // MARK: - UIView
-extension UIView {
+public extension UIView {
     
     /// [設定LayoutConstraint => 不能加frame](https://zonble.gitbooks.io/kkbox-ios-dev/content/autolayout/intrinsic_content_size.html)
     /// - Parameter superView: [此View的SuperView](https://www.appcoda.com.tw/auto-layout-programmatically/)
