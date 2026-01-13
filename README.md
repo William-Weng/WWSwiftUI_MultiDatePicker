@@ -11,13 +11,14 @@ https://github.com/user-attachments/assets/5ffcfd5f-c37f-4fd0-a7bc-88b683809a29
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.1.6"))
+    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.1.7"))
 ]
 ```
 
 ### 可用函式 (Function)
 |函式|功能|
 |-|-|
+|init(selectType:)|初始化|
 |move(toParent:on:)|移動到UIViewController上|
 |clean()|清除所選日期|
 |title(_:)|更新標題|
@@ -27,7 +28,7 @@ dependencies: [
 |-|-|
 |multiDatePicker(_:didSelected:)|取得已選擇到的日期|
 
-### Example
+### Example (UIKit)
 ```swift
 import UIKit
 import WWSwiftUI_MultiDatePicker
@@ -49,7 +50,7 @@ final class ViewController: UIViewController {
     }
     
     func initSetting() {
-        multiDatePicker = WWSwiftUI.MultiDatePicker(type: .range)
+        multiDatePicker = WWSwiftUI.MultiDatePicker(selectType: .range)
         multiDatePicker.move(toParent: self, on: multiDatePickerView)
         multiDatePicker.delegate = self
     }
@@ -65,5 +66,22 @@ extension ViewController: WWSwiftUI.MultiDatePicker.Delegate {
         let dates = !dateComponents.isEmpty ? "\(dateComponents)" : "Unselected"
         resultLabel.text = "Selected Dates: \(dates)"
     }
+}
+```
+
+### Example (SwiftUI)
+```swift
+import SwiftUI
+import WWSwiftUI_MultiDatePicker
+
+struct SwiftUIView: View {
+
+    var body: some View {
+        WWSwiftUI.MultiDatePickerView(selectType: .multiple, model: .init())
+    }
+}
+
+#Preview {
+    SwiftUIView()
 }
 ```
