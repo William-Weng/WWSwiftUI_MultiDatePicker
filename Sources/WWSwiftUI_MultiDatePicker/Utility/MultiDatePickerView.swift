@@ -8,19 +8,25 @@
 import SwiftUI
 
 // MARK: - MultiDatePicker (SwiftUI)
-extension WWSwiftUI.MultiDatePicker {
+public extension WWSwiftUI {
     
     struct MultiDatePickerView: View {
         
-        let selectType: SelectType
-        
-        @ObservedObject var model: DateModel
+        let selectType: WWSwiftUI.MultiDatePicker.SelectType
+                
+        @ObservedObject var model: WWSwiftUI.MultiDatePicker.DateModel
         
         @State private var firstDateComponents: DateComponents?
         @State private var lastDateComponents: DateComponents?
         @State private var selectedDateComponents: DateComponents?
         
-        var body: some View {
+        public init(selectType: WWSwiftUI.MultiDatePicker.SelectType, model: WWSwiftUI.MultiDatePicker.DateModel) {
+            self.selectType = selectType
+            self.model = model
+        }
+        
+        public var body: some View {
+            
             VStack {
                 
                 let binding = Binding<Set<DateComponents>>(
@@ -28,8 +34,8 @@ extension WWSwiftUI.MultiDatePicker {
                     set: { newValue in bindingAction(with: selectType, newValue: newValue) }
                 )
                 
-                MultiDatePicker(model.title, selection: binding)
-                        .background(.clear)
+                SwiftUI.MultiDatePicker(model.title, selection: binding)
+                    .background(.clear)
             }
             .padding()
         }
@@ -37,7 +43,7 @@ extension WWSwiftUI.MultiDatePicker {
 }
 
 // MARK: - 開放工具
-extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
+extension WWSwiftUI.MultiDatePickerView {
     
     /// 還原初始值
     func reset() {
@@ -48,7 +54,7 @@ extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
 }
 
 // MARK: - 主要工具
-private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
+private extension WWSwiftUI.MultiDatePickerView {
     
     /// 跟MultiDatePicker綁定數值變化的處理
     /// - Parameters:
@@ -65,7 +71,7 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
 }
 
 // MARK: - 小工具
-private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
+private extension WWSwiftUI.MultiDatePickerView {
     
     /// 單選模式下的處理 (只留下最新的)
     /// - Parameter newValue: Set<DateComponents>
@@ -103,7 +109,7 @@ private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
 }
 
 // MARK: - 小工具
-private extension WWSwiftUI.MultiDatePicker.MultiDatePickerView {
+private extension WWSwiftUI.MultiDatePickerView {
     
     /// 同一個日期點兩下就全部清除
     /// - Parameter dateComponents: DateComponents?

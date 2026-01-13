@@ -8,12 +8,14 @@
 import SwiftUI
 
 // MARK: - 共享狀態模型
-extension WWSwiftUI.MultiDatePicker {
+public extension WWSwiftUI.MultiDatePicker {
     
     class DateModel: ObservableObject {
         
         private let calendar: Calendar = .current
         private let components: Set<Calendar.Component> = [.year, .month, .day, .calendar, .era]
+        
+        public init() {}
         
         @Published var title = "Select Dates"
         @Published var selectedDates: Set<DateComponents> = []

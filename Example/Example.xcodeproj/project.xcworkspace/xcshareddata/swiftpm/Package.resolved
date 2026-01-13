@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker",
       "state" : {
-        "revision" : "234d61be6f55e26db2bb718512de77f9a61bdb12",
-        "version" : "1.1.4"
+        "revision" : "a5a5417abd55bbbb5c7a4b55b7e13f82e44a01cf",
+        "version" : "1.1.5"
       }
     }
   ],
