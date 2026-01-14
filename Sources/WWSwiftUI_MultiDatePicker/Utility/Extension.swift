@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Charts
 
 /// [相對差集（差集）](https://zh.wikipedia.org/zh-tw/补集)
 /// - Parameters:
@@ -58,7 +59,7 @@ public extension UIView {
     }
 }
 
-// MARK: - View
+// MARK: - View (@ViewBuilder)
 public extension View {
     
     /// 畫面的if功能
@@ -67,7 +68,26 @@ public extension View {
     ///   - transform: (Self) -> Content
     /// - Returns: some View
     @ViewBuilder
-    func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+    func _if<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+
+// MARK: - ChartContent (@ChartContentBuilder)
+public extension ChartContent {
+    
+    /// 圖表的if功能
+    /// - Parameters:
+    ///   - condition: 判斷式
+    ///   - transform: (Self) -> Content
+    /// - Returns: some View
+    @ChartContentBuilder
+    func _if<Content: ChartContent>(_ condition: Bool, transform: (Self) -> Content) -> some ChartContent {
         
         if condition {
             transform(self)
