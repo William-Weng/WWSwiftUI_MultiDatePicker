@@ -12,29 +12,30 @@ import Combine
 // MARK: - MultiDatePicker
 public extension WWSwiftUI {
     
-    class MultiDatePicker: AnyObject {
+    class MultiDatePicker: WWSwiftUI.`Protocol` {
+        
+        public let hostingController: UIHostingController<AnyView>
         
         public var view: UIView { hostingController.view }
-        
+                
         public weak var delegate: Delegate?
         
         private let model: DateModel
-        private let hostingController: UIHostingController<MultiDatePickerView>
+        private let rootView: MultiDatePickerView
         
         private var cancellables = Set<AnyCancellable>()
         
         /// 初始化
-        /// - Parameter selectType: SelectType
+        /// - Parameter selectType: DatePicker選擇類型
         public init(selectType: SelectType = .multiple) {
-            self.model = DateModel()
-            self.hostingController = .init(rootView: MultiDatePickerView(selectType: selectType, model: model))
+            model = DateModel()
+            rootView = MultiDatePickerView(selectType: selectType, model: model)
+            hostingController = .init(rootView: AnyView(rootView))
+            bindModel()
         }
         
         deinit {
-            delegate = .none
-            hostingController.willMove(toParent: .none)
-            hostingController.view.removeFromSuperview()
-            hostingController.removeFromParent()
+            deinitAction()
         }
     }
 }
@@ -42,24 +43,10 @@ public extension WWSwiftUI {
 // MARK: - 公開函式
 public extension WWSwiftUI.MultiDatePicker {
     
-    /// [移動到UIViewController上](https://www.keaura.com/blog/a-multi-date-picker-for-swiftui)
-    /// - Parameters:
-    ///   - parent: UIViewController
-    ///   - otherView: UIView?
-    func move(toParent parent: UIViewController, on otherView: UIView? = .none) {
-        
-        bindModel()
-        
-        parent.addChild(hostingController)
-        hostingController.didMove(toParent: parent)
-        
-        if let otherView = otherView { hostingController.view._autolayout(on: otherView) }
-    }
-    
     /// 清除所選日期
     func clean() {
         model.removeAllDate()
-        hostingController.rootView.reset()
+        rootView.reset()
     }
     
     /// 更新標題
@@ -79,5 +66,13 @@ private extension WWSwiftUI.MultiDatePicker {
             .receive(on: RunLoop.main)
             .sink { [unowned self] in self.delegate?.multiDatePicker(self, didSelected: $0) }
             .store(in: &cancellables)
+    }
+    
+    /// 處理deinit
+    func deinitAction() {
+        delegate = .none
+        hostingController.willMove(toParent: .none)
+        hostingController.view.removeFromSuperview()
+        hostingController.removeFromParent()
     }
 }
