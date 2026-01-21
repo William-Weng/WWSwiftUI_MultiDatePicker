@@ -59,6 +59,25 @@ public extension UIView {
     }
 }
 
+// MARK: - View
+public extension View {
+    
+    /// 點擊View的反應
+    /// - Parameter action: (ChartProxy, CGPoint) -> Void
+    /// - Returns: View
+    func _chartOverlayOnTap(action: @escaping (ChartProxy, CGPoint) -> Void) -> some View {
+        
+        chartOverlay { proxy in
+            GeometryReader { geometry in
+                Rectangle()
+                    .fill(.clear)
+                    .contentShape(Rectangle())
+                    .onTapGesture { location in action(proxy, location) }
+            }
+        }
+    }
+}
+
 // MARK: - View (@ViewBuilder)
 public extension View {
     

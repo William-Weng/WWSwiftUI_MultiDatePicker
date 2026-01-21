@@ -11,7 +11,7 @@ https://github.com/user-attachments/assets/5ffcfd5f-c37f-4fd0-a7bc-88b683809a29
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.2.1"))
+    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.2.2"))
 ]
 ```
 
