@@ -17,6 +17,7 @@ public extension WWSwiftUI {
         var hostingController: UIHostingController<AnyView> { get }
         
         func move(toParent parent: UIViewController, on otherView: UIView?)
+        func removeHostingController()
     }
 }
 
@@ -33,6 +34,13 @@ public extension WWSwiftUI.`Protocol` {
         hostingController.didMove(toParent: parent)
         
         if let otherView = otherView { hostingController.view._autolayout(on: otherView) }
+    }
+    
+    /// 移除hostingController
+    func removeHostingController() {
+        hostingController.willMove(toParent: .none)
+        hostingController.view.removeFromSuperview()
+        hostingController.removeFromParent()
     }
 }
 

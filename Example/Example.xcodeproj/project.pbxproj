@@ -10,8 +10,9 @@
 		810B54AA2F0E4FC9001A932A /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 810B54A92F0E4FC9001A932A /* WWSwiftUI_MultiDatePicker */; };
 		8112FF192F0E5C1F00083C2B /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8112FF182F0E5C1F00083C2B /* WWSwiftUI_MultiDatePicker */; };
 		811756A32F14F3F700BE26EB /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 811756A22F14F3F700BE26EB /* WWSwiftUI_MultiDatePicker */; };
+		8122E1BA2F29A1C10037FED2 /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8122E1B92F29A1C10037FED2 /* WWSwiftUI_MultiDatePicker */; };
+		8122E1D32F29A2F80037FED2 /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8122E1D22F29A2F80037FED2 /* WWSwiftUI_MultiDatePicker */; };
 		813BEF862F20C149006FCC30 /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 813BEF852F20C149006FCC30 /* WWSwiftUI_MultiDatePicker */; };
-		813BEF892F20C178006FCC30 /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 813BEF882F20C178006FCC30 /* WWSwiftUI_MultiDatePicker */; };
 		815306D52F1762530050BD0E /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 815306D42F1762530050BD0E /* WWSwiftUI_MultiDatePicker */; };
 		8179F37B2F10CFFB00D8C92D /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8179F37A2F10CFFB00D8C92D /* WWSwiftUI_MultiDatePicker */; };
 		8179F3812F10D6DB00D8C92D /* WWSwiftUI_MultiDatePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 8179F3802F10D6DB00D8C92D /* WWSwiftUI_MultiDatePicker */; };
@@ -62,7 +63,7 @@
 				819FA3772F179AA70026D732 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				81991E4F2F10DDCF001DF413 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				81E62BF22F10E00100EF27F1 /* WWSwiftUI_MultiDatePicker in Frameworks */,
-				813BEF892F20C178006FCC30 /* WWSwiftUI_MultiDatePicker in Frameworks */,
+				8122E1BA2F29A1C10037FED2 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				819B18672F0F41D200384B5B /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				811756A32F14F3F700BE26EB /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				8112FF192F0E5C1F00083C2B /* WWSwiftUI_MultiDatePicker in Frameworks */,
@@ -70,6 +71,7 @@
 				815306D52F1762530050BD0E /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				819FA34F2F17882F0026D732 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				813BEF862F20C149006FCC30 /* WWSwiftUI_MultiDatePicker in Frameworks */,
+				8122E1D32F29A2F80037FED2 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				818DD2D22F0E63100016CF5C /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				81F8DE502F10B35700195692 /* WWSwiftUI_MultiDatePicker in Frameworks */,
 				8179F37B2F10CFFB00D8C92D /* WWSwiftUI_MultiDatePicker in Frameworks */,
@@ -137,7 +139,8 @@
 				819FA34E2F17882F0026D732 /* WWSwiftUI_MultiDatePicker */,
 				819FA3762F179AA70026D732 /* WWSwiftUI_MultiDatePicker */,
 				813BEF852F20C149006FCC30 /* WWSwiftUI_MultiDatePicker */,
-				813BEF882F20C178006FCC30 /* WWSwiftUI_MultiDatePicker */,
+				8122E1B92F29A1C10037FED2 /* WWSwiftUI_MultiDatePicker */,
+				8122E1D22F29A2F80037FED2 /* WWSwiftUI_MultiDatePicker */,
 			);
 			productName = Example;
 			productReference = 817EE1FE2EB1FA050036B57C /* Example.app */;
@@ -168,7 +171,7 @@
 			mainGroup = 817EE1F52EB1FA050036B57C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				813BEF872F20C178006FCC30 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */,
+				8122E1D12F29A2F80037FED2 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 817EE1FF2EB1FA050036B57C /* Products */;
@@ -412,12 +415,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		813BEF872F20C178006FCC30 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */ = {
+		8122E1D12F29A2F80037FED2 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.2;
+				minimumVersion = 1.2.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -435,13 +438,17 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = WWSwiftUI_MultiDatePicker;
 		};
-		813BEF852F20C149006FCC30 /* WWSwiftUI_MultiDatePicker */ = {
+		8122E1B92F29A1C10037FED2 /* WWSwiftUI_MultiDatePicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = WWSwiftUI_MultiDatePicker;
 		};
-		813BEF882F20C178006FCC30 /* WWSwiftUI_MultiDatePicker */ = {
+		8122E1D22F29A2F80037FED2 /* WWSwiftUI_MultiDatePicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 813BEF872F20C178006FCC30 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */;
+			package = 8122E1D12F29A2F80037FED2 /* XCRemoteSwiftPackageReference "WWSwiftUI_MultiDatePicker" */;
+			productName = WWSwiftUI_MultiDatePicker;
+		};
+		813BEF852F20C149006FCC30 /* WWSwiftUI_MultiDatePicker */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = WWSwiftUI_MultiDatePicker;
 		};
 		815306D42F1762530050BD0E /* WWSwiftUI_MultiDatePicker */ = {

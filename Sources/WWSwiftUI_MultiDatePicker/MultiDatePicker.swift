@@ -35,7 +35,8 @@ public extension WWSwiftUI {
         }
         
         deinit {
-            deinitAction()
+            delegate = .none
+            removeHostingController()
         }
     }
 }
@@ -66,13 +67,5 @@ private extension WWSwiftUI.MultiDatePicker {
             .receive(on: RunLoop.main)
             .sink { [unowned self] in self.delegate?.multiDatePicker(self, didSelected: $0) }
             .store(in: &cancellables)
-    }
-    
-    /// 處理deinit
-    func deinitAction() {
-        delegate = .none
-        hostingController.willMove(toParent: .none)
-        hostingController.view.removeFromSuperview()
-        hostingController.removeFromParent()
     }
 }

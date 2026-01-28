@@ -12,7 +12,7 @@ https://github.com/user-attachments/assets/5ffcfd5f-c37f-4fd0-a7bc-88b683809a29
 
 ```bash
 dependencies: [
-    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.2.2"))
+    .package(url: "https://github.com/William-Weng/WWSwiftUI_MultiDatePicker.git", .upToNextMajor(from: "1.2.3"))
 ]
 ```
 
@@ -21,6 +21,7 @@ dependencies: [
 |-|-|
 |init(selectType:)|初始化|
 |move(toParent:on:)|移動到UIViewController上|
+|removeHostingController()|移除hostingController|
 |clean()|清除所選日期|
 |title(_:)|更新標題|
 
